@@ -10,9 +10,9 @@ namespace eShop.DataAccess.InMemory
 {
     public class InMemoryRepository<T> where T:BaseEntity
     {
-        object cache = MemoryCache.Default;
+        ObjectCache cache = MemoryCache.Default;
         List<T> items;
-        String className;
+        string className;
 
         public  InMemoryRepository()
         {
@@ -39,7 +39,7 @@ namespace eShop.DataAccess.InMemory
             T tToUpdate = items.Find(i => i.Id == t.Id);
             if (tToUpdate != null)
             {
-                items = t;
+                tToUpdate = t;
             }
             else
             {
