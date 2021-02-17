@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace eShop.Core.Models
 {
-   public class Product
+   public class Product:BaseEntity
     {
-        public string Id { get; set; }
+       
         [StringLength(20)]
         [Display(Name="Product Name")]
         public string Name { get; set; }
@@ -24,11 +24,7 @@ namespace eShop.Core.Models
         // camel case--> every second letter will be capital "productCategory"
         //pascal case--> both 1st and 2nd 3rd letter will be capital "ProductCategory"
 
-        public Product()
-        {
-            this.Id = Guid.NewGuid().ToString();
-        }
-
+        
 
 
     }
