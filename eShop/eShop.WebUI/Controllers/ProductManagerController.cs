@@ -4,6 +4,7 @@ using eShop.Core.ViewModels;
 using eShop.DataAccess.InMemory;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -40,7 +41,7 @@ namespace eShop.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(Product product)
+        public ActionResult Create(Product product,HttpPostedFileBase file)
         {
             if(!ModelState.IsValid)
             {
@@ -48,6 +49,13 @@ namespace eShop.WebUI.Controllers
             }
             else
             {
+                if(file !=null)
+                {
+                 //it will be store like this ID+Extension  1234ddjdjfjgjgjgj.jpg
+
+                    product.Image = product.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//ProductImages//") + product.Image);
+                }
                 context.Insert(product);
                 context.Commit();
 
@@ -73,16 +81,25 @@ namespace eShop.WebUI.Controllers
         }
         [HttpPost]
 
-        public ActionResult Edit(Product product,string id)
+        public ActionResult Edit(Product product,string id, HttpPostedFileBase file)
         {
             Product productToEdit = context.Find(id);
             if(productToEdit==null)
             {
                 return HttpNotFound();
-
             }
+       
             else
             {
+                if(!ModelState.IsValid)
+                {
+                    return View(product);
+                }
+                if(file !=null)
+                {
+                    productToEdit.Image = product.Id + Path.GetExtension(file.FileName);
+                    file.SaveAs(Server.MapPath("//Content//ProductImages//") + productToEdit.Image);
+                }
                 productToEdit.Category = product.Category;
                 productToEdit.Description = product.Description;
                 productToEdit.Image = product.Image;
