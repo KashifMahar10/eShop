@@ -49,6 +49,7 @@ namespace eShop.WebUI.Controllers
             }
             else
             {
+                 
                 if(file !=null)
                 {
                  //it will be store like this ID+Extension  1234ddjdjfjgjgjgj.jpg
