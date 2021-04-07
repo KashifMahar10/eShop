@@ -1,4 +1,5 @@
 ﻿using eShop.Core.Contracts;
+using eShop.Core.ViewModels;
 using eShop.Core.Models;
 using System;
 using System.Collections.Generic;
@@ -32,10 +33,24 @@ namespace eShop.WebUI.Controllers
             }
         }
 
-        public ActionResult Index()
+        public ActionResult Index(string Category=null)
         {
-            List<Product> products = context.Collection().ToList();
-            return View(products);
+            List<Product> products;
+            List<ProductCategory> Categories = productCategories.Collection().ToList();
+            if(Category== null)
+            {
+                products = context.Collection().ToList();
+
+            }
+            else
+            {
+                 products = context.Collection().Where(p => p.Category == Category).ToList();
+            }
+            ProductListViewModel model = new ProductListViewModel();
+            model.Products = products;
+            model.ProductCategories = Categories;
+
+            return View(model);
         }
 
         public ActionResult About()
