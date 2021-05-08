@@ -12,6 +12,8 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -49,9 +51,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContext.cs" />
-    <Compile Include="Migrations\202102260814009_Initial.cs" />
-    <Compile Include="Migrations\202102260814009_Initial.Designer.cs">
-      <DependentUpon>202102260814009_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\202105080817513_first.cs" />
+    <Compile Include="Migrations\202105080817513_first.Designer.cs">
+      <DependentUpon>202105080817513_first.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105081251342_initial.cs" />
+    <Compile Include="Migrations\202105081251342_initial.Designer.cs">
+      <DependentUpon>202105081251342_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,8 +76,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102260814009_Initial.resx">
-      <DependentUpon>202102260814009_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202105080817513_first.resx">
+      <DependentUpon>202105080817513_first.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105081251342_initial.resx">
+      <DependentUpon>202105081251342_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
