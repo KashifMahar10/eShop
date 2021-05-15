@@ -24,7 +24,7 @@ namespace eShop.Services
                 
         }
 
-        private Basket GetBasket(System.Web.HttpContextBase httpContext, bool createIfNull)
+        private Basket GetBasket(HttpContextBase httpContext, bool createIfNull)
         {
             HttpCookie cookie = httpContext.Request.Cookies.Get(BasketSessionName);
             Basket basket = new Basket();
